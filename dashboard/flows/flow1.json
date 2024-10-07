@@ -1,0 +1,687 @@
+[
+    {
+        "id": "c31e3f525d88f6e9",
+        "type": "tab",
+        "label": "bathroom",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b2f9b444239c36dc",
+        "type": "ui_media",
+        "z": "c31e3f525d88f6e9",
+        "group": "623907ac1386ed9b",
+        "name": "Lavatrice",
+        "width": 0,
+        "height": 0,
+        "order": 3,
+        "category": "sensors",
+        "file": "lavatrice.jpg",
+        "layout": "adjust",
+        "showcontrols": true,
+        "loop": true,
+        "onstart": true,
+        "scope": "local",
+        "tooltip": "",
+        "x": 620,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5110b33fdece85c4",
+        "type": "ui_switch",
+        "z": "c31e3f525d88f6e9",
+        "name": "",
+        "label": "Washing machine switcher",
+        "tooltip": "",
+        "group": "623907ac1386ed9b",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "lavatrice",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "{\"outdoor\":{\"lavatrice\":true,\"light\":\"\",\"door\":\"\"}}",
+        "onvalueType": "json",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "{\"outdoor\":{\"lavatrice\":false,\"light\":\"\",\"door\":\"\"}}",
+        "offvalueType": "json",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 260,
+        "y": 680,
+        "wires": [
+            [
+                "e3fb0c6b70c6d38c",
+                "c059862e2328c3bd",
+                "12c0e85daa43813a"
+            ]
+        ]
+    },
+    {
+        "id": "e3fb0c6b70c6d38c",
+        "type": "mqtt out",
+        "z": "c31e3f525d88f6e9",
+        "name": "",
+        "topic": "home_rx",
+        "qos": "1",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "90f7944ac3c1af8c",
+        "x": 600,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "f3e333acb94937da",
+        "type": "ui_text",
+        "z": "c31e3f525d88f6e9",
+        "group": "623907ac1386ed9b",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Washing Machine Status : ",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 650,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "c059862e2328c3bd",
+        "type": "function",
+        "z": "c31e3f525d88f6e9",
+        "name": "lavatrice",
+        "func": "var json = msg.payload;\nmsg.payload = json.outdoor[\"lavatrice\"];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 740,
+        "wires": [
+            [
+                "f3e333acb94937da"
+            ]
+        ]
+    },
+    {
+        "id": "30ad40c988d0ebd4",
+        "type": "ui_media",
+        "z": "c31e3f525d88f6e9",
+        "group": "1db4bdc9e4c79cbc",
+        "name": " luce della cucina",
+        "width": 0,
+        "height": 0,
+        "order": 3,
+        "category": "sensors",
+        "file": "kitchen_light.jpeg",
+        "layout": "adjust",
+        "showcontrols": true,
+        "loop": true,
+        "onstart": true,
+        "scope": "local",
+        "tooltip": "",
+        "x": 630,
+        "y": 860,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7f10d16324891c33",
+        "type": "ui_switch",
+        "z": "c31e3f525d88f6e9",
+        "name": "",
+        "label": "light switcher",
+        "tooltip": "",
+        "group": "1db4bdc9e4c79cbc",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "light",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "{\"outdoor\":{\"light\":true,\"door\":\" \",\"lavatrice\":\"\"}}",
+        "onvalueType": "json",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "{\"outdoor\":{\"light\":false,\"door\":\"\",\"lavatrice\":\"\"}}",
+        "offvalueType": "json",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 290,
+        "y": 920,
+        "wires": [
+            [
+                "8834dd78aefd294f",
+                "b73f37fddc7a3cbe",
+                "513cdbeaf1b796a7"
+            ]
+        ]
+    },
+    {
+        "id": "8834dd78aefd294f",
+        "type": "mqtt out",
+        "z": "c31e3f525d88f6e9",
+        "name": "",
+        "topic": "home_rx",
+        "qos": "1",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "90f7944ac3c1af8c",
+        "x": 580,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "6fb545fa89b02808",
+        "type": "ui_text",
+        "z": "c31e3f525d88f6e9",
+        "group": "1db4bdc9e4c79cbc",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "light Status : ",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 590,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "b73f37fddc7a3cbe",
+        "type": "function",
+        "z": "c31e3f525d88f6e9",
+        "name": "light",
+        "func": "var json = msg.payload;\nmsg.payload = json.outdoor[\"light\"];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 980,
+        "wires": [
+            [
+                "6fb545fa89b02808"
+            ]
+        ]
+    },
+    {
+        "id": "b594f3dc20c4ef37",
+        "type": "ui_media",
+        "z": "c31e3f525d88f6e9",
+        "group": "49b24c4ef40ed3a9",
+        "name": "door",
+        "width": 0,
+        "height": 0,
+        "order": 4,
+        "category": "sensors",
+        "file": "house_door.jpeg",
+        "layout": "adjust",
+        "showcontrols": true,
+        "loop": true,
+        "onstart": true,
+        "scope": "local",
+        "tooltip": "",
+        "x": 590,
+        "y": 1080,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "469ca062864de66c",
+        "type": "ui_switch",
+        "z": "c31e3f525d88f6e9",
+        "name": "",
+        "label": "door switcher",
+        "tooltip": "",
+        "group": "49b24c4ef40ed3a9",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "door",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "{\"outdoor\":{\"door\":true,\"light\":\"\",\"lavatrice\":\"\"}}",
+        "onvalueType": "json",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "{\"outdoor\":{\"door\":false,\"light\":\"\",\"lavatrice\":\"\"}}",
+        "offvalueType": "json",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 300,
+        "y": 1140,
+        "wires": [
+            [
+                "b49e6b02f506bccf",
+                "8ee5c78610728d42",
+                "960384ae86a832b1"
+            ]
+        ]
+    },
+    {
+        "id": "b49e6b02f506bccf",
+        "type": "mqtt out",
+        "z": "c31e3f525d88f6e9",
+        "name": "",
+        "topic": "home_rx",
+        "qos": "1",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "90f7944ac3c1af8c",
+        "x": 580,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "800904c4065eca90",
+        "type": "ui_text",
+        "z": "c31e3f525d88f6e9",
+        "group": "49b24c4ef40ed3a9",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "door Status : ",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 590,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "8ee5c78610728d42",
+        "type": "function",
+        "z": "c31e3f525d88f6e9",
+        "name": "door",
+        "func": "var json = msg.payload;\nmsg.payload = json.outdoor[\"door\"];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 1200,
+        "wires": [
+            [
+                "800904c4065eca90"
+            ]
+        ]
+    },
+    {
+        "id": "04352f62fe28ba39",
+        "type": "debug",
+        "z": "c31e3f525d88f6e9",
+        "name": "SQL_CMD_MACHINE",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "0871393f8ccee843",
+        "type": "mysql",
+        "z": "c31e3f525d88f6e9",
+        "mydb": "db3d9d9733ac1a8c",
+        "name": "",
+        "x": 440,
+        "y": 540,
+        "wires": [
+            [
+                "04352f62fe28ba39"
+            ]
+        ]
+    },
+    {
+        "id": "156055e88be99a21",
+        "type": "function",
+        "z": "c31e3f525d88f6e9",
+        "name": "function 1",
+        "func": "var json=msg.payload;\nvar outdoor = json.outdoor;\nvar machine = Object.keys(outdoor)[0];\nvar status = outdoor[machine];\n\nvar timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');\nmsg.payload = [timestamp,machine,status];\nvar query = \"INSERT INTO machines(TEMPO,MACHINE,STATUS) VALUES(?,?,?)\"; \nmsg.topic = query;\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 540,
+        "wires": [
+            [
+                "0871393f8ccee843"
+            ]
+        ]
+    },
+    {
+        "id": "12c0e85daa43813a",
+        "type": "link out",
+        "z": "c31e3f525d88f6e9",
+        "name": "lavatrice",
+        "mode": "link",
+        "links": [
+            "e10ad59f337c42b7",
+            "3a092aa8e0db58b1"
+        ],
+        "x": 475,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "e10ad59f337c42b7",
+        "type": "link in",
+        "z": "c31e3f525d88f6e9",
+        "name": "in",
+        "links": [
+            "12c0e85daa43813a",
+            "513cdbeaf1b796a7",
+            "960384ae86a832b1"
+        ],
+        "x": 145,
+        "y": 540,
+        "wires": [
+            [
+                "156055e88be99a21"
+            ]
+        ]
+    },
+    {
+        "id": "513cdbeaf1b796a7",
+        "type": "link out",
+        "z": "c31e3f525d88f6e9",
+        "name": "light",
+        "mode": "link",
+        "links": [
+            "e10ad59f337c42b7",
+            "3a092aa8e0db58b1"
+        ],
+        "x": 455,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "960384ae86a832b1",
+        "type": "link out",
+        "z": "c31e3f525d88f6e9",
+        "name": "door",
+        "mode": "link",
+        "links": [
+            "e10ad59f337c42b7",
+            "3a092aa8e0db58b1"
+        ],
+        "x": 465,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "43becb1e06621364",
+        "type": "csv",
+        "z": "c31e3f525d88f6e9",
+        "name": "csv file",
+        "spec": "",
+        "sep": ",",
+        "hdrin": true,
+        "hdrout": "once",
+        "multi": "mult",
+        "ret": "\\r\\n",
+        "temp": "time,machine,status",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 450,
+        "y": 420,
+        "wires": [
+            [
+                "79b893be02b9a34a",
+                "c5132fbb33be8667"
+            ]
+        ]
+    },
+    {
+        "id": "740a3384e0a39c97",
+        "type": "function",
+        "z": "c31e3f525d88f6e9",
+        "name": "csv function",
+        "func": "var time = new Date().toISOString().slice(0, 19).replace('T', ' ');\nvar json = msg.payload;\nvar outdoor = json.outdoor;\nvar machine = Object.keys(outdoor)[0];\nvar status = outdoor[machine];\nvar m ={'time':time,'machine':machine,'status':status};\nreturn {payload:m};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 420,
+        "wires": [
+            [
+                "43becb1e06621364"
+            ]
+        ]
+    },
+    {
+        "id": "a46482152b26d090",
+        "type": "debug",
+        "z": "c31e3f525d88f6e9",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 880,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "79b893be02b9a34a",
+        "type": "file",
+        "z": "c31e3f525d88f6e9",
+        "name": "file path",
+        "filename": "/Users/ala/Desktop/tp/devices.csv",
+        "filenameType": "str",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "utf8",
+        "x": 640,
+        "y": 420,
+        "wires": [
+            [
+                "a46482152b26d090"
+            ]
+        ]
+    },
+    {
+        "id": "3a092aa8e0db58b1",
+        "type": "link in",
+        "z": "c31e3f525d88f6e9",
+        "name": "link in 1",
+        "links": [
+            "12c0e85daa43813a",
+            "513cdbeaf1b796a7",
+            "960384ae86a832b1"
+        ],
+        "x": 45,
+        "y": 420,
+        "wires": [
+            [
+                "2c27f1452a69e6e2"
+            ]
+        ]
+    },
+    {
+        "id": "2c27f1452a69e6e2",
+        "type": "json",
+        "z": "c31e3f525d88f6e9",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 150,
+        "y": 420,
+        "wires": [
+            [
+                "740a3384e0a39c97"
+            ]
+        ]
+    },
+    {
+        "id": "c5132fbb33be8667",
+        "type": "debug",
+        "z": "c31e3f525d88f6e9",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "623907ac1386ed9b",
+        "type": "ui_group",
+        "name": "Washing Machine",
+        "tab": "325409b4197e81cb",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "90f7944ac3c1af8c",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "tcp://broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "1db4bdc9e4c79cbc",
+        "type": "ui_group",
+        "name": "Light",
+        "tab": "325409b4197e81cb",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "49b24c4ef40ed3a9",
+        "type": "ui_group",
+        "name": "Door",
+        "tab": "325409b4197e81cb",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "db3d9d9733ac1a8c",
+        "type": "MySQLdatabase",
+        "name": "SQL_DB",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "HOMESYSTEM",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "325409b4197e81cb",
+        "type": "ui_tab",
+        "name": "Devices",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]

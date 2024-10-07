@@ -1,0 +1,5 @@
+node-red-contrib-image-output
+node-red-contrib-remote
+node-red-dashboard
+node-red-node-email
+node-red-node-mysql
